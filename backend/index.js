@@ -7,6 +7,8 @@ dotenv.config();
 const port = process.env.PORT;
 const authRoutes = require("./routes/auth/");
 const fs = require("fs");
+const jobRouter = require("./routes/jobs/");
+const authMiddleware = require("./middleware/auth");
 
 app.use(bodyParser.json());
 
@@ -23,6 +25,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/jobs", authMiddleware, jobRouter);
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
