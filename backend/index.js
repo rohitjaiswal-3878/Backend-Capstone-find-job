@@ -9,7 +9,13 @@ const authRoutes = require("./routes/auth/");
 const fs = require("fs");
 const jobRouter = require("./routes/jobs/");
 const authMiddleware = require("./middleware/auth");
-
+const cors = require("cors");
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 app.use(bodyParser.json());
 
 // log every in coming request.
