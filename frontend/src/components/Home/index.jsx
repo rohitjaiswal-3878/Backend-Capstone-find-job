@@ -5,8 +5,10 @@ import navbarShape1 from "../../assets/navbar_shape1.png";
 import navbarShape2 from "../../assets/navbar_shape2.png";
 import navbarShape3 from "../../assets/navbar_shape3.png";
 import "./index.css";
+import searchIcon from "../../assets/search_icon.png";
 
 function Home() {
+  const DEFAULT_SKILLS = ["Wordpres", "react", "nodejs", "express", "mongodb"];
   const navigate = useNavigate();
   const [jobs, setJobs] = useState([
     {
@@ -60,6 +62,70 @@ function Home() {
         <div className="home-login-registeration">
           <button className="home-button1">Login</button>
           <button className="home-button2">Register</button>
+        </div>
+      </div>
+      <div className="home-body">
+        {token ? <button onClick={handleLogout}>Logout</button> : ""}
+        <div className="home-body-search">
+          <img
+            src={searchIcon}
+            alt="search icon"
+            className="home-search-icon"
+          />
+          <input
+            type="text"
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+            placeholder="Type any job title"
+            name="search"
+            className="home-search-input"
+          />
+        </div>
+        <div className="home-body-select">
+          <div>
+            <select
+              name="remote"
+              onChange={handleSkill}
+              defaultValue={"DEFAULT"}
+            >
+              <option disabled value="DEFAULT">
+                Skills
+              </option>
+              {DEFAULT_SKILLS.map((skill) => (
+                <option key={skill} value={skill}>
+                  {skill}
+                </option>
+              ))}
+            </select>
+            {skills.map((skill) => {
+              return (
+                <span className="home-body-selected" key={skill}>
+                  {skill}
+                  <span
+                    onClick={() => removeSkill(skill)}
+                    className="home-body-selected-cross"
+                  >
+                    X
+                  </span>
+                </span>
+              );
+            })}
+          </div>
+          <div>
+            <button onClick={fetchAllJobs} className="home-body-filter-btn">
+              Apply Filter
+            </button>
+            <button
+              onClick={() => {
+                setSkills([]);
+                setTitle("");
+              }}
+              className="home-body-clear-btn"
+            >
+              Clear
+            </button>
+            {/* <button onClick={() => navigate("/job-post")}>+ Add Job</button> */}
+          </div>
         </div>
       </div>
     </>
