@@ -1,5 +1,5 @@
 import React from "react";
-import Register from "../../components/ProtectedRoutes/Register";
+import Register from "../../components/Register";
 import registerBanner from "../../assets/register_banner.png";
 
 function RegisterPage() {
