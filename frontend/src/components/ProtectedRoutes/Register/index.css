@@ -1,0 +1,64 @@
+.container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding-left: 130px;
+    justify-content: center;
+    font-family: "DM Sans", sans-serif;
+}
+
+.heading1 {
+    font-size: 2.1rem;
+    font-weight: 600;
+}
+.heading2 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 30px;
+    margin-top: 9px;
+}
+::placeholder{
+    color: black;
+}
+
+.inputs {
+    margin-left: 5px;
+    max-width: 70%;
+    padding: 18px 20px;
+    font-size: 0.9rem;  
+    border-radius: 5px;
+    border: 2px solid #C2C2C2;
+    margin-bottom: 20px;
+}
+
+#agreementCheck {
+    margin-right: 5px;
+}
+
+.checkbox-container {
+    margin-left: 5px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.create-btn {
+    width: 30%;
+    padding: 10px 0px;
+    background: #ED5353;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.have-account span{
+    margin-left: 8px;
+    font-weight: 540;
+    text-decoration: underline;
+    color: black;
+    cursor: pointer;
+}

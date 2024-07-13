@@ -1,0 +1,75 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    font-family: "DM Sans", sans-serif;
+}
+
+.login-form{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding-left: 130px;
+    justify-content: center;
+    font-family: "DM Sans", sans-serif;
+}
+
+.login-heading1{
+    font-size: 2.1rem;
+    font-weight: 600;
+}
+
+.login-heading2{
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 35px;
+    margin-top: 5px;
+}
+
+.login-inputs {
+    margin-left: 5px;
+    max-width: 70%;
+    padding: 18px 20px;
+    font-size: 0.9rem;  
+    border-radius: 5px;
+    border: 2px solid #C2C2C2;
+    margin-bottom: 20px;
+}
+
+.login-btn {
+    width: 30%;
+    padding: 10px 0px;
+    background: #ED5353;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.login-signup span {
+    margin-left: 8px;
+    font-weight: 540;
+    text-decoration: underline;
+    color: black;
+    cursor: pointer;
+}
+
+
+img {
+    height: 100vh;
+    width: 50vw;
+    object-fit: cover;
+}
+
+.login-banner-text {
+    position: fixed;
+    right: 200px;
+    font-size: 40px;
+    top: 35px;
+    color: white;
+    font-family: "DM Sans", sans-serif;
+
+}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../../apis/auth";
+import "./index.css";
 
 function Register() {
   const navigate = useNavigate();
@@ -34,17 +35,45 @@ function Register() {
   };
 
   return (
-    <div>
-      <h1>Create an account</h1>
-      <h2>Your personal job finder is here.</h2>
-      <input type="text" placeholder="Name" onChange={handleChange} />
-      <input type="email" placeholder="Email" onChange={handleChange} />
-      <input type="password" placeholder="Password" onChange={handleChange} />
-      <input type="number" placeholder="Mobile" onChange={handleChange} />
-      <button onClick={handleSubmit}>Create Account</button>
-      <p>
+    <div className="container">
+      <h1 className="heading1">Create an account</h1>
+      <h2 className="heading2">Your personal job finder is here.</h2>
+      <input
+        type="text"
+        placeholder="Name"
+        onChange={handleChange}
+        className="inputs"
+      />
+      <input
+        type="email"
+        placeholder="Email"
+        onChange={handleChange}
+        className="inputs"
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        onChange={handleChange}
+        className="inputs"
+      />
+      <input
+        type="number"
+        placeholder="Mobile"
+        onChange={handleChange}
+        className="inputs"
+      />
+      <div className="checkbox-container">
+        <input type="checkbox" name="agreementCheck" id="agreementCheck" />
+        <label htmlFor="agreementCheck">
+          By creating an account, I agree to our terms of use and privacy policy
+        </label>
+      </div>
+      <button onClick={handleSubmit} className="create-btn">
+        Create Account
+      </button>
+      <p className="have-account">
         Already have an account?
-        <span onClick={() => navigate("/login")}>Sign in</span>
+        <span onClick={() => navigate("/login")}>Sign In</span>
       </p>
     </div>
   );
