@@ -6,6 +6,7 @@ import navbarShape2 from "../../assets/navbar_shape2.png";
 import navbarShape3 from "../../assets/navbar_shape3.png";
 import "./index.css";
 import searchIcon from "../../assets/search_icon.png";
+import peopleIcon from "../../assets/peoples_icon.png";
 
 function Home() {
   const DEFAULT_SKILLS = ["Wordpres", "react", "nodejs", "express", "mongodb"];
@@ -13,12 +14,25 @@ function Home() {
   const [jobs, setJobs] = useState([
     {
       _id: 1,
-      logoURL: "",
+      logoURL:
+        "https://www.saffiretech.com/wp-content/uploads/2019/02/cropped-SaffireTech-Logo-WhiteBack-1.jpg",
       salary: "10000",
       location: "kathmandu",
       remote: "Remote",
       jobType: "Full Time",
-      skills: ["React", "Node", "MongoDB"],
+      skills: ["React", "Node", "MongoDB", "Express", "MongoDB"],
+      position: "Frontend developer",
+    },
+    {
+      _id: 2,
+      logoURL:
+        "https://www.saffiretech.com/wp-content/uploads/2019/02/cropped-SaffireTech-Logo-WhiteBack-1.jpg",
+      salary: "10000",
+      location: "kathmandu",
+      remote: "Remote",
+      jobType: "Full Time",
+      skills: ["React", "Node", "MongoDB", "Express", "MongoDB"],
+      position: "Frontend developer",
     },
   ]);
 
@@ -128,6 +142,40 @@ function Home() {
           </div>
         </div>
       </div>
+      {jobs.map((data) => {
+        return (
+          <div key={data._id} className="home-job">
+            <div className="home-job-left">
+              <div className="home-job-icon">
+                <img src={data.logoURL} alt="logo" />
+              </div>
+              <div className="home-job-details">
+                <p className="home-job-details-heading">{data.position}</p>
+                <p className="home-job-details-1">
+                  <div>
+                    <img src={peopleIcon} alt="people icon" />
+                    <span>11 - 50</span>
+                  </div>
+                  <span>&#8377; {data.salary}</span>
+                  <span>{data.location}</span>
+                </p>
+                <p className="home-job-details-2">
+                  <span>{data.remote}</span>
+                  <span>{data.jobType}</span>
+                </p>
+              </div>
+            </div>
+            <div className="home-job-detail-skills">
+              <p>
+                {data.skills.map((skill) => (
+                  <span key={skill}>{skill}</span>
+                ))}
+              </p>
+              <button>View details</button>
+            </div>
+          </div>
+        );
+      })}
     </>
   );
 }
