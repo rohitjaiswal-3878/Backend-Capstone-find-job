@@ -1,0 +1,98 @@
+.job-details-container {
+    background-color: #ffefef;
+    font-family: "DM sans";
+    height: 100vh;
+}
+.job-details-heading {
+    width: 80vw;
+    position: absolute;
+    left: 10vw;
+    top: 85px;
+    background-color: white;
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 550;
+    box-shadow: -1px 5px 18px -11px black;
+}
+
+.job-details-body {
+    width: 80vw;
+    position: absolute;
+    left: 10vw;
+    top: 200px;
+    box-shadow: 0px 0px 20px -13px black;
+    background-color: white;
+    box-sizing: border-box;
+    padding: 25px 35px;
+}
+
+.job-details-1 {
+    display: flex;
+    color: #999999;
+}
+
+.job-details-1 div {
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+}
+.job-details-1 div img {
+    height: 40px;
+    object-fit: contain;
+    width: 40px;
+    margin-right: 10px;
+}
+
+.job-details-2 {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.job-details-2-position {
+    font-size: 2.4rem;
+    font-weight: 550;
+}
+
+.job-details-2-location {
+    color: #ED5353;
+    font-size: 17px;
+    font-weight: 550;
+}
+
+.job-details-2 button {
+    width: 130px;
+    height: 40px;
+    margin-top: 3px;
+    font-size: 16px;
+    font-weight: 548;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    background-color: #ED5353;
+    color: white;
+}
+
+.job-details-3 {
+    margin-top: 25px;
+    width: 50%;
+    height: 10%;
+    font-size: 16px;
+}
+
+.job-details-3-heading {
+    color: #999999;
+    gap: 5px;
+    margin-bottom: 6px;
+}
+.job-details-3 p {
+    display: flex;
+    align-items: center;
+}
+
+.job-details-3 img {
+    width: 20px;
+    height: 100%;
+}

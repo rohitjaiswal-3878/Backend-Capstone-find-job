@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
 import { useNavigate } from "react-router-dom";
-import navbarShape1 from "../../assets/navbar_shape1.png";
-import navbarShape2 from "../../assets/navbar_shape2.png";
-import navbarShape3 from "../../assets/navbar_shape3.png";
+import { getAllJobPost } from "../../apis/job";
 import "./index.css";
 import searchIcon from "../../assets/search_icon.png";
 import peopleIcon from "../../assets/peoples_icon.png";
+import Header from "../Header";
 
 function Home() {
   const DEFAULT_SKILLS = ["Wordpres", "react", "nodejs", "express", "mongodb"];
@@ -14,17 +13,6 @@ function Home() {
   const [jobs, setJobs] = useState([
     {
       _id: 1,
-      logoURL:
-        "https://www.saffiretech.com/wp-content/uploads/2019/02/cropped-SaffireTech-Logo-WhiteBack-1.jpg",
-      salary: "10000",
-      location: "kathmandu",
-      remote: "Remote",
-      jobType: "Full Time",
-      skills: ["React", "Node", "MongoDB", "Express", "MongoDB"],
-      position: "Frontend developer",
-    },
-    {
-      _id: 2,
       logoURL:
         "https://www.saffiretech.com/wp-content/uploads/2019/02/cropped-SaffireTech-Logo-WhiteBack-1.jpg",
       salary: "10000",
@@ -42,7 +30,7 @@ function Home() {
 
   const fetchAllJobs = async () => {
     const filterSkills = skills.join(",");
-    const response = await getAllJobsPost({ skills: filterSkills, title });
+    const response = await getAllJobPost({ skills: filterSkills, title });
     setJobs(response.data);
   };
 
@@ -68,16 +56,7 @@ function Home() {
   };
   return (
     <>
-      <div className="home-header">
-        <img src={navbarShape1} alt="home-shape1" className="home-shape1" />
-        <img src={navbarShape2} alt="home-shape2" className="home-shape2" />
-        <img src={navbarShape3} alt="home-shape3" className="home-shape3" />
-        <h3 className="home-header-heading">Jobfinder</h3>
-        <div className="home-login-registeration">
-          <button className="home-button1">Login</button>
-          <button className="home-button2">Register</button>
-        </div>
-      </div>
+      <Header />
       <div className="home-body">
         {token ? <button onClick={handleLogout}>Logout</button> : ""}
         <div className="home-body-search">
@@ -96,7 +75,7 @@ function Home() {
           />
         </div>
         <div className="home-body-select">
-          <div>
+          <div className="home-body-select-left">
             <select
               name="remote"
               onChange={handleSkill}
@@ -111,19 +90,21 @@ function Home() {
                 </option>
               ))}
             </select>
-            {skills.map((skill) => {
-              return (
-                <span className="home-body-selected" key={skill}>
-                  {skill}
-                  <span
-                    onClick={() => removeSkill(skill)}
-                    className="home-body-selected-cross"
-                  >
-                    X
+            <div className="home-body-selected-skills">
+              {skills.map((skill) => {
+                return (
+                  <span className="home-body-selected" key={skill}>
+                    {skill}
+                    <span
+                      onClick={() => removeSkill(skill)}
+                      className="home-body-selected-cross"
+                    >
+                      X
+                    </span>
                   </span>
-                </span>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
           <div>
             <button onClick={fetchAllJobs} className="home-body-filter-btn">

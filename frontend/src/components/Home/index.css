@@ -1,80 +1,7 @@
-.home-header {
-    position: relative;
-    width: 100vw;
-    height: 100px;
-    border: 1px solid red;
-    box-sizing: border-box;
-    background-color: #ED5353;
-    color : white;
-    margin : 0vh 0vw;
-    padding: 3vh 3vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 0px 0px 50px 50px;
-    font-family: "DM sans";
-}
-.home-shape1 {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 60%;
-    width: 20%;
-    object-fit: contain;
-}
-.home-shape2 {
-    position: absolute;
-    left: 40vw;
-    top: -2vh;
-    height: 70%;
-    width: 20%;
-    object-fit: contain;
-}
-.home-shape3 {
-    position: absolute;
-    right: 3vw;
-    top: 0vh;
-    height: 100%;
-    width: 20%;
-    object-fit: contain;
-}
-
-.home-header-heading {
-    z-index: 1;
-    font-size: 27px;
-}
-
-.home-login-registeration {
-    z-index: 1;
-    display: flex;
-    gap: 18px;
-}
-
-.home-login-registeration button {
-    width: 100px;
-    padding: 10px 5px;
-    font-size: 18px;
-}
-
-.home-login-registeration .home-button1{
-    background-color: transparent;
-    border: 2.5px solid white;
-    color: white;
-    border-radius: 8px;
-}
-
-.home-login-registeration .home-button2{
-    background-color: #FFFFFF;
-    border-radius: 8px;
-    color: #FF6B6B;
-    border: 2.5px solid white;
-    font-weight: 550;
-}
-
 .home-body {
     width: 70vw;
-    height: 200px;
-    margin: 3vh auto;
+    min-height: 200px;
+    margin: 3vh auto 7vh auto;
     box-shadow: 0 0 18px -2px red;
     padding: 25px 0;
     box-sizing: border-box;
@@ -121,6 +48,10 @@
     align-items: center;
 }
 
+.home-body-selected-skills {
+    display: inline-flex;
+    flex-wrap: wrap;
+}
 .home-body-select select {
     height: 100%;
     padding: 10px;
@@ -132,7 +63,6 @@
 }
 
 .home-body-selected {
-    height: 100%;
     padding: 10px 0px 10px 10px;
     margin-left: 5px;
     background-color: #FFEEEE;
@@ -175,7 +105,7 @@
 .home-job {
     width: 70vw;
     height: 120px;
-    margin: 50px auto 10px auto;
+    margin: 10px auto ;
     box-shadow: 0 0 18px -4px rgba(219, 7, 7, 0.59);
     padding: 15px;
     box-sizing: border-box;
