@@ -31,7 +31,7 @@ router.post("/register", async (req, res) => {
   if (user) {
     return res.status(400).json({ message: "User already exists." });
   }
-  const salt = await bcrypt.genSalt(10); // genSalt adds the level of difficulty of the algorithm
+  const salt = await bcrypt.genSalt(11); // genSalt adds the level of difficulty of the algorithm
   const hashPassword = await bcrypt.hash(password, salt);
   const newUser = new User({
     name,
