@@ -1,0 +1,81 @@
+.job-post-container {
+    display: flex;
+    font-family: "DM sans";
+}
+.job-post-form {
+    width: 55vw;
+    height: 100vh;
+    box-sizing: border-box;
+    padding:35px 0px 0px 100px;
+}
+
+#job-post-banner {
+    height: 100vh;
+    width: 45vw;
+    object-fit: cover;
+}
+
+table {
+    width: 40vw;
+    font-size: 20px;
+    border-collapse: separate;
+    border-spacing: 0 1rem;
+}
+
+.job-post-column-name {
+    width: 180px;
+}   
+
+table tr td input[type=text], input[type=number] {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 5px;
+    outline: none;
+    border : 1.5px solid #C2C2C2
+}
+
+table tr td select {
+    width: 23%;
+    padding: 5px 14px;
+    border: 1.5px solid #C2C2C2;
+    border-radius: 5px;
+    outline: none;
+}
+
+table tr td textarea {
+    width: 101.5%;
+    padding: 5px 6px;
+    border: 1.5px solid #C2C2C2;
+    border-radius: 5px;
+    outline: none;
+}
+
+::placeholder {
+    font-family: "DM sans";
+}
+
+.job-post-buttons {
+    display: flex;
+    justify-content: end;
+    width: 104%;
+}
+table tr td button {
+    width: 100px;
+    padding: 9px 5px;
+    border-radius: 5px;
+    outline: none;
+    margin-left: 10px;
+}
+
+.job-post-clear-btn {
+    background-color: transparent;
+    border: 1.5px solid #C2C2C2;
+    color: #C2C2C2;
+}
+
+.job-post-add-btn {
+    background-color: #ED5353;
+    color: white;
+    border: 1.5px solid #ED5353;
+    outline: none;
+}
