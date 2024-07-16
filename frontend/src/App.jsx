@@ -16,8 +16,7 @@ function App() {
         <Route path="/job-details/:id" element={<JobDetailsPage />} />
         <Route
           path="/job-post"
-          // element={<ProtectedRoute Component={JobPostPage} />}
-          element={<JobPostPage />}
+          element={<ProtectedRoute Component={JobPostPage} />}
         />
         <Route path="/" element={<HomePage />} />
       </Routes>

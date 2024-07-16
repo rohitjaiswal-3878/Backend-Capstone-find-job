@@ -11,13 +11,21 @@ function Register() {
     email: "",
     password: "",
     mobile: "",
+    aggreement: false,
   });
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    if (e.target.name === "aggrement") {
+      setFormData({
+        ...formData,
+        [e.target.name]: !formData.aggreement,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value,
+      });
+    }
   };
 
   const handleSubmit = async () => {
@@ -25,13 +33,29 @@ function Register() {
       !formData.email ||
       !formData.name ||
       !formData.password ||
-      !formData.mobile
+      !formData.mobile ||
+      !formData.aggreement
     ) {
       alert("Fields can't be empty.");
-    }
+    } else {
+      setFormData({
+        name: "",
+        email: "",
+        password: "",
+        mobile: "",
+        aggreement: false,
+      });
+      const response = await registerUser({ ...formData });
 
-    const response = await registerUser({ ...formData });
-    alert(response.message);
+      if (response.name) {
+        alert("Registered Successfully!");
+      } else if (response) {
+        alert(response);
+      } else {
+        alert("Something Went Wrong!!!");
+      }
+      if (response) navigate("/login");
+    }
   };
 
   return (
@@ -43,27 +67,36 @@ function Register() {
         placeholder="Name"
         onChange={handleChange}
         className="inputs"
+        name="name"
       />
       <input
         type="email"
         placeholder="Email"
         onChange={handleChange}
         className="inputs"
+        name="email"
       />
       <input
         type="password"
         placeholder="Password"
         onChange={handleChange}
         className="inputs"
+        name="password"
       />
       <input
         type="number"
         placeholder="Mobile"
         onChange={handleChange}
         className="inputs"
+        name="mobile"
       />
       <div className="checkbox-container">
-        <input type="checkbox" name="agreementCheck" id="agreementCheck" />
+        <input
+          type="checkbox"
+          name="aggreement"
+          id="agreementCheck"
+          onChange={handleChange}
+        />
         <label htmlFor="agreementCheck">
           By creating an account, I agree to our terms of use and privacy policy
         </label>

@@ -16,12 +16,18 @@ function LoginPage() {
   const handleSubmit = async () => {
     if (!formData.email || !formData.password) {
       alert("Fields cant be empty!");
-    }
-
-    const response = await loginUser(formData.email, formData.password);
-    if (response?.headers["auth-token"]) {
-      localStorage.setItem("token", response?.headers["auth-token"]);
-      navigate("/");
+    } else {
+      const response = await loginUser(formData.email, formData.password);
+      console.log(response);
+      if (typeof response === "string") {
+        alert(response);
+      } else if (response.headers["auth-token"]) {
+        console.log("in");
+        localStorage.setItem("token", response?.headers["auth-token"]);
+        navigate("/");
+      } else {
+        alert("Something Went Wrong.");
+      }
     }
   };
   return (
