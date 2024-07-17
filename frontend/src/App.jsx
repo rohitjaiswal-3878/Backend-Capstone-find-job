@@ -5,7 +5,7 @@ import RegisterPage from "./pages/RegisterPage";
 import JobDetailsPage from "./pages/JobDetailsPage";
 import JobPostPage from "./pages/JobPostPage";
 import HomePage from "./pages/HomePage";
-import ProtectedRoute from "./components/ProtectedRoutes";
+import ProtectedRoutes from "./components/ProtectedRoutes";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Route path="/job-details/:id" element={<JobDetailsPage />} />
         <Route
           path="/job-post"
-          element={<ProtectedRoute Component={JobPostPage} />}
+          element={<ProtectedRoutes Component={JobPostPage} />}
         />
         <Route path="/" element={<HomePage />} />
       </Routes>

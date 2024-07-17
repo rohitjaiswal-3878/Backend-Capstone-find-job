@@ -26,7 +26,7 @@ function Home() {
 
   const [skills, setSkills] = useState([]);
   const [title, setTitle] = useState("");
-  const [token] = useState(localStorage.getItem("token"));
+  const [token, setToken] = useState(localStorage.getItem("token"));
 
   const fetchAllJobs = async () => {
     const filterSkills = skills.join(",");
@@ -56,9 +56,8 @@ function Home() {
   };
   return (
     <>
-      <Header />
+      <Header token={token} setToken={setToken} />
       <div className="home-body">
-        {token ? <button onClick={handleLogout}>Logout</button> : ""}
         <div className="home-body-search">
           <img
             src={searchIcon}
@@ -84,16 +83,16 @@ function Home() {
               <option disabled value="DEFAULT">
                 Skills
               </option>
-              {DEFAULT_SKILLS.map((skill) => (
-                <option key={skill} value={skill}>
+              {DEFAULT_SKILLS.map((skill, index) => (
+                <option key={index} value={skill}>
                   {skill}
                 </option>
               ))}
             </select>
             <div className="home-body-selected-skills">
-              {skills.map((skill) => {
+              {skills.map((skill, index) => {
                 return (
-                  <span className="home-body-selected" key={skill}>
+                  <span className="home-body-selected" key={index}>
                     {skill}
                     <span
                       onClick={() => removeSkill(skill)}
@@ -107,6 +106,14 @@ function Home() {
             </div>
           </div>
           <div>
+            {token && (
+              <button
+                className="home-body-filter-btn"
+                onClick={() => navigate("/job-post")}
+              >
+                + Add Job
+              </button>
+            )}
             <button onClick={fetchAllJobs} className="home-body-filter-btn">
               Apply Filter
             </button>
@@ -119,7 +126,7 @@ function Home() {
             >
               Clear
             </button>
-            {/* <button onClick={() => navigate("/job-post")}>+ Add Job</button> */}
+            {/* <button onClick={() => navigate("/job-post")} >+ Add Job</button> */}
           </div>
         </div>
       </div>
@@ -148,8 +155,8 @@ function Home() {
             </div>
             <div className="home-job-detail-skills">
               <p>
-                {data.skills.map((skill) => (
-                  <span key={skill}>{skill}</span>
+                {data.skills.map((skill, index) => (
+                  <span key={index}>{skill}</span>
                 ))}
               </p>
               <button>View details</button>

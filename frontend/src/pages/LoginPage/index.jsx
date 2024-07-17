@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../apis/auth";
 import { useState } from "react";
@@ -30,6 +30,13 @@ function LoginPage() {
       }
     }
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/");
+    }
+  }, []);
   return (
     <div className="login-container">
       <div className="login-form">
