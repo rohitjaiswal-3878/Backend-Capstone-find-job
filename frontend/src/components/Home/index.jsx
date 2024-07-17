@@ -35,7 +35,11 @@ function Home() {
   };
 
   useEffect(() => {
-    // fetchAllJobs
+    async function getAllJob() {
+      const response = await getAllJobPost();
+      console.log(response);
+    }
+    getAllJob();
   }, []);
 
   const handleLogout = (e) => {

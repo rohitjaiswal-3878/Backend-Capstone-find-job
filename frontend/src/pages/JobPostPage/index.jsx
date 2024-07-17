@@ -3,8 +3,10 @@ import JobPostBanner from "../../assets/jobPost_banner.png";
 import "./index.css";
 import { useState } from "react";
 import { createJobPost } from "../../apis/job";
+import { useNavigate } from "react-router-dom";
 
 function JobPostPage() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     logo: "",
@@ -27,7 +29,11 @@ function JobPostPage() {
 
   const handleAddJob = async () => {
     const response = await createJobPost(formData);
-    console.log(response);
+    if (response.data === "Job created") {
+      navigate("/");
+    } else {
+      alert("Something Went Wrong!!!");
+    }
   };
 
   return (
@@ -191,7 +197,12 @@ function JobPostPage() {
             <tr>
               <td className="job-post-column-name"></td>
               <td className="job-post-buttons">
-                <button className="job-post-clear-btn">Cancel</button>
+                <button
+                  className="job-post-clear-btn"
+                  onClick={() => navigate("/")}
+                >
+                  Cancel
+                </button>
                 <button className="job-post-add-btn" onClick={handleAddJob}>
                   +Add Job
                 </button>

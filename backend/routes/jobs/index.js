@@ -75,7 +75,7 @@ router.get("/get/:id", async (req, res, next) => {
 
 router.get("/all", async (req, res, next) => {
   try {
-    const jobs = await Job.find().select("name logo position"); // Need three fields name, logo, position
+    const jobs = await Job.find().select("name logo position salary skills"); // Need three fields name, logo, position
     res.status(200).json(jobs);
   } catch (err) {
     next(err);
