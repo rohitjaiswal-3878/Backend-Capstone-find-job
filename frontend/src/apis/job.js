@@ -6,14 +6,21 @@ const getAllJobPost = async () => {
     const results = await axios.get(`${backendUrl}api/jobs/all`, {
       headers: { "auth-token": localStorage.getItem("token") },
     });
-    return results;
+    return results.data;
   } catch (err) {
     console.log(err);
   }
 };
 
-const getJobDetailsById = async () => {
-  return null;
+const getJobDetailsById = async (id) => {
+  try {
+    const response = await axios.get(`${backendUrl}api/jobs/get/${id}`, {
+      headers: { "auth-token": localStorage.getItem("token") },
+    });
+    return response.data;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const updateJobDetailsById = async () => {

@@ -10,19 +10,7 @@ import Header from "../Header";
 function Home() {
   const DEFAULT_SKILLS = ["Wordpres", "react", "nodejs", "express", "mongodb"];
   const navigate = useNavigate();
-  const [jobs, setJobs] = useState([
-    {
-      _id: 1,
-      logoURL:
-        "https://www.saffiretech.com/wp-content/uploads/2019/02/cropped-SaffireTech-Logo-WhiteBack-1.jpg",
-      salary: "10000",
-      location: "kathmandu",
-      remote: "Remote",
-      jobType: "Full Time",
-      skills: ["React", "Node", "MongoDB", "Express", "MongoDB"],
-      position: "Frontend developer",
-    },
-  ]);
+  const [jobs, setJobs] = useState([]);
 
   const [skills, setSkills] = useState([]);
   const [title, setTitle] = useState("");
@@ -35,12 +23,17 @@ function Home() {
   };
 
   useEffect(() => {
-    async function getAllJob() {
-      const response = await getAllJobPost();
-      console.log(response);
-    }
     getAllJob();
   }, []);
+
+  async function getAllJob() {
+    const response = await getAllJobPost();
+    if (Array.isArray(response)) {
+      setJobs([...response.reverse()]);
+    } else {
+      alert("Something Went Wrong!!!");
+    }
+  }
 
   const handleLogout = (e) => {
     localStorage.clear();
@@ -139,7 +132,7 @@ function Home() {
           <div key={data._id} className="home-job">
             <div className="home-job-left">
               <div className="home-job-icon">
-                <img src={data.logoURL} alt="logo" />
+                <img src={data.logo} alt="logo" />
               </div>
               <div className="home-job-details">
                 <p className="home-job-details-heading">{data.position}</p>
@@ -163,7 +156,9 @@ function Home() {
                   <span key={index}>{skill}</span>
                 ))}
               </p>
-              <button>View details</button>
+              <button onClick={() => navigate(`/job-details/${data._id}`)}>
+                View details
+              </button>
             </div>
           </div>
         );
