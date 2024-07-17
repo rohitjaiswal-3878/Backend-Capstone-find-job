@@ -1,8 +1,35 @@
 import React from "react";
 import JobPostBanner from "../../assets/jobPost_banner.png";
 import "./index.css";
+import { useState } from "react";
+import { createJobPost } from "../../apis/job";
 
 function JobPostPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    logo: "",
+    position: "",
+    salary: "",
+    jobType: "",
+    remote: "",
+    description: "",
+    about: "",
+    skills: "",
+    information: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleAddJob = async () => {
+    const response = await createJobPost(formData);
+    console.log(response);
+  };
+
   return (
     <div className="job-post-container">
       <div className="job-post-form">
@@ -17,8 +44,9 @@ function JobPostPage() {
                 <input
                   type="text"
                   id="companyName"
-                  name="companyName"
+                  name="name"
                   placeholder="Enter your company name here"
+                  onChange={handleChange}
                 />
               </td>
             </tr>
@@ -30,8 +58,9 @@ function JobPostPage() {
                 <input
                   type="text"
                   id="logoUrl"
-                  name="logoUrl"
+                  name="logo"
                   placeholder="Enter the link"
+                  onChange={handleChange}
                 />
               </td>
             </tr>
@@ -43,8 +72,9 @@ function JobPostPage() {
                 <input
                   type="text"
                   id="jobPosition"
-                  name="jobPosition"
+                  name="position"
                   placeholder="Enter job position"
+                  onChange={handleChange}
                 />
               </td>
             </tr>
@@ -56,8 +86,9 @@ function JobPostPage() {
                 <input
                   type="number"
                   id="monthlySalary"
-                  name="monthlySalary"
+                  name="salary"
                   placeholder="Enter Amount in rupees"
+                  onChange={handleChange}
                 />
               </td>
             </tr>
@@ -66,12 +97,17 @@ function JobPostPage() {
                 <label htmlFor="jobType">Job Type</label>
               </td>
               <td>
-                <select name="jobType" id="jobType" defaultValue={"DEFAULT"}>
+                <select
+                  name="jobType"
+                  id="jobType"
+                  defaultValue={"DEFAULT"}
+                  onChange={handleChange}
+                >
                   <option value="DEFAULT" disabled>
                     select
                   </option>
-                  <option value="full time">Full time</option>
-                  <option value="part time">Part time</option>
+                  <option value="Full Time">Full time</option>
+                  <option value="Part Time">Part time</option>
                 </select>
               </td>
             </tr>
@@ -80,7 +116,12 @@ function JobPostPage() {
                 <label htmlFor="remote">Remote/Office</label>
               </td>
               <td>
-                <select name="remote" id="remote" defaultValue={"DEFAULT"}>
+                <select
+                  name="remote"
+                  id="remote"
+                  defaultValue={"DEFAULT"}
+                  onChange={handleChange}
+                >
                   <option value="DEFAULT" disabled>
                     select
                   </option>
@@ -91,27 +132,15 @@ function JobPostPage() {
             </tr>
             <tr>
               <td className="job-post-column-name">
-                <label htmlFor="location">Location</label>
-              </td>
-              <td>
-                <input
-                  type="text"
-                  id="location"
-                  name="location"
-                  placeholder="Enter Location"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td className="job-post-column-name">
                 <label htmlFor="jobDescription">Job Description</label>
               </td>
               <td>
                 <textarea
-                  name="jobDescription"
+                  name="description"
                   id="jobDescription"
                   placeholder="Type the Job description."
                   rows={3}
+                  onChange={handleChange}
                 ></textarea>
               </td>
             </tr>
@@ -121,10 +150,11 @@ function JobPostPage() {
               </td>
               <td>
                 <textarea
-                  name="aboutCompany"
+                  name="about"
                   id="aboutCompany"
                   placeholder="Type about your company."
                   rows={3}
+                  onChange={handleChange}
                 ></textarea>
               </td>
             </tr>
@@ -137,8 +167,9 @@ function JobPostPage() {
                   <input
                     type="text"
                     id="skillsRequired"
-                    name="skillsRequired"
+                    name="skills"
                     placeholder="Enter the must have skills."
+                    onChange={handleChange}
                   />
                 </div>
               </td>
@@ -153,6 +184,7 @@ function JobPostPage() {
                   id="information"
                   placeholder="Enter the additional information."
                   rows={2}
+                  onChange={handleChange}
                 ></textarea>
               </td>
             </tr>
@@ -160,7 +192,9 @@ function JobPostPage() {
               <td className="job-post-column-name"></td>
               <td className="job-post-buttons">
                 <button className="job-post-clear-btn">Cancel</button>
-                <button className="job-post-add-btn">+Add Job</button>
+                <button className="job-post-add-btn" onClick={handleAddJob}>
+                  +Add Job
+                </button>
               </td>
             </tr>
           </tbody>

@@ -15,6 +15,7 @@ app.use(
     origin: "http://localhost:5173",
     credentials: true,
     exposedHeaders: "auth-token",
+    "Access-Control-Allow-Headers": "auth-token",
   })
 );
 app.use(bodyParser.json());
