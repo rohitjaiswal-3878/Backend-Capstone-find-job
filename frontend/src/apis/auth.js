@@ -7,9 +7,9 @@ export const loginUser = async (email, password) => {
     const response = await axios.post(reqUrl, { email, password });
     return response;
   } catch (err) {
-    // if (err.response.data.message) {
-    //   return err.response.data.message;
-    // }
+    if (err.response.data.message) {
+      return err.response.data.message;
+    }
     console.log(err);
   }
 };
