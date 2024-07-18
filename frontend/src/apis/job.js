@@ -23,8 +23,22 @@ const getJobDetailsById = async (id) => {
   }
 };
 
-const updateJobDetailsById = async () => {
-  return null;
+const updateJobDetailsById = async (formData, id) => {
+  try {
+    const response = await axios.patch(
+      `${backendUrl}api/jobs/update/${id}`,
+      { ...formData },
+      {
+        headers: {
+          "auth-token": localStorage.getItem("token"),
+        },
+      }
+    );
+
+    return response.data;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const createJobPost = async (formData) => {

@@ -9,6 +9,7 @@ function Header({ token, setToken }) {
   const handleLogout = () => {
     setToken("");
     localStorage.removeItem("token");
+    navigate("/login");
   };
   return (
     <div className="home-header">

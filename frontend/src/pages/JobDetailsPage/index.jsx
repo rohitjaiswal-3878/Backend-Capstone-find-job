@@ -71,7 +71,7 @@ function JobDetailsPage() {
                 {isEditable && (
                   <button
                     onClick={() => {
-                      navigate("/job-post", {
+                      navigate("/job-update", {
                         state: {
                           id: jobDetails._id,
                           jobDetails,

@@ -6,6 +6,7 @@ import JobDetailsPage from "./pages/JobDetailsPage";
 import JobPostPage from "./pages/JobPostPage";
 import HomePage from "./pages/HomePage";
 import ProtectedRoutes from "./components/ProtectedRoutes";
+import UpdateJobDetails from "./pages/UpdateJobDetails";
 
 function App() {
   return (
@@ -17,6 +18,10 @@ function App() {
         <Route
           path="/job-post"
           element={<ProtectedRoutes Component={JobPostPage} />}
+        />
+        <Route
+          path="/job-update"
+          element={<ProtectedRoutes Component={UpdateJobDetails} />}
         />
         <Route path="/" element={<HomePage />} />
       </Routes>
