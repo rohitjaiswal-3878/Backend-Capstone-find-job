@@ -12,7 +12,7 @@ const authMiddleware = require("./middleware/auth");
 const cors = require("cors");
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://backend-capstone-find-job.vercel.app/",
     credentials: true,
     exposedHeaders: "auth-token",
     "Access-Control-Allow-Headers": "auth-token",
