@@ -45,7 +45,12 @@ function Home() {
   };
 
   useEffect(() => {
-    getAllJob();
+    const token = localStorage.getItem("token");
+    if (token === null) {
+      navigate("/login");
+    } else {
+      getAllJob();
+    }
   }, []);
 
   async function getAllJob() {
