@@ -9,7 +9,19 @@ import Header from "../Header";
 import { getSearchJobs } from "../../apis/job";
 
 function Home() {
-  const DEFAULT_SKILLS = ["Wordpres", "react", "nodejs", "express", "mongodb"];
+  const DEFAULT_SKILLS = [
+    "Wordpres",
+    "react",
+    "nodejs",
+    "express",
+    "mongodb",
+    "html",
+    "css",
+    "js",
+    "java",
+    "reading",
+    "php",
+  ];
   const navigate = useNavigate();
   const [jobs, setJobs] = useState([]);
 
@@ -20,7 +32,16 @@ function Home() {
   const fetchAllJobs = async () => {
     const filterSkills = skills.join(",");
     const response = await getSearchJobs({ skills: filterSkills, title });
-    console.log(response);
+    setJobs([]);
+    if (Array.isArray(response)) {
+      response.forEach((res) => {
+        if (!jobs.includes(res)) {
+          setJobs((prev) => [...prev, res]);
+        }
+      });
+    } else {
+      alert("Something Went Wrong!!!");
+    }
   };
 
   useEffect(() => {
@@ -119,6 +140,7 @@ function Home() {
               onClick={() => {
                 setSkills([]);
                 setTitle("");
+                getAllJob();
               }}
               className="home-body-clear-btn"
             >

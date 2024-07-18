@@ -77,10 +77,14 @@ const getSearchJobs = async ({ skills, title }) => {
         },
       }),
     ]);
+    let data = [];
 
-    const data = response.map((res) => {
-      return res.data.map((r) => r);
+    response.forEach((res) => {
+      res.data.forEach((e) => {
+        data.push(e);
+      });
     });
+
     return data;
   } catch (err) {
     console.log(err);
