@@ -141,7 +141,7 @@ router.get("/filter/:skills", async (req, res, next) => {
     }
     const skillsArray = skills.split(",").map((skill) => skill.trim()); // filter in an array
     const jobs = await Job.find({ skills: { $in: skillsArray } }).select(
-      "name logo position"
+      "name logo position salary skills"
     ); // $in is applying a OR method.
     res.status(200).json(jobs);
   } catch (err) {
@@ -161,7 +161,7 @@ router.get("/search/:query", async (req, res, next) => {
         { jobType: { $regex: query, $options: "i" } }, // then this
         { description: { $regex: query, $options: "i" } }, // then this
       ],
-    }).select("name logo position");
+    }).select("name logo position salary skills");
 
     res.status(200).json(job);
   } catch (err) {

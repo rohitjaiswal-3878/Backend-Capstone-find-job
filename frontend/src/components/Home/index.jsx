@@ -6,6 +6,7 @@ import "./index.css";
 import searchIcon from "../../assets/search_icon.png";
 import peopleIcon from "../../assets/peoples_icon.png";
 import Header from "../Header";
+import { getSearchJobs } from "../../apis/job";
 
 function Home() {
   const DEFAULT_SKILLS = ["Wordpres", "react", "nodejs", "express", "mongodb"];
@@ -18,8 +19,8 @@ function Home() {
 
   const fetchAllJobs = async () => {
     const filterSkills = skills.join(",");
-    const response = await getAllJobPost({ skills: filterSkills, title });
-    setJobs(response.data);
+    const response = await getSearchJobs({ skills: filterSkills, title });
+    console.log(response);
   };
 
   useEffect(() => {

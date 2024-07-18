@@ -61,9 +61,36 @@ const createJobPost = async (formData) => {
   }
 };
 
+const getSearchJobs = async ({ skills, title }) => {
+  try {
+    const s = skills.replace(/\s+/g, " ") || "123";
+
+    const response = await axios.all([
+      axios.get(`${backendUrl}api/jobs/filter/${s}`, {
+        headers: {
+          "auth-token": localStorage.getItem("token"),
+        },
+      }),
+      axios.get(`${backendUrl}api/jobs/search/${title ? title : "xyz"}`, {
+        headers: {
+          "auth-token": localStorage.getItem("token"),
+        },
+      }),
+    ]);
+
+    const data = response.map((res) => {
+      return res.data.map((r) => r);
+    });
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export {
   getAllJobPost,
   getJobDetailsById,
   updateJobDetailsById,
   createJobPost,
+  getSearchJobs,
 };
